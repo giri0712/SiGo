@@ -1,222 +1,111 @@
-🪙 SiGo — Live Gold & Silver Market Tracker
-🚀 Project Overview
+<div align="center">
+<h1>
+  <span style="color:#c9a84c">Si</span>Go — Live Metal Market Rates
+</h1>
+<p>A Spring Boot backend that scrapes and serves live precious metal prices (Gold 24K, Gold 22K, Silver) with a sleek, auto-refreshing market dashboard.</p>
+<p>
+  <a href="https://github.com/your-username/sigo/issues">Report Bug</a> ·
+  <a href="https://github.com/your-username/sigo/issues">Request Feature</a>
+</p>
+</div>
 
-SiGo is a real-time market tracking backend application built using Spring Boot that automatically scrapes live Gold and Silver prices, processes them, stores them in a database, and displays them through a dynamic web dashboard.
+About The Project
+SiGo is a lightweight market data API built with Java Spring Boot. It scrapes real-time precious metal prices and exposes them through a REST endpoint that renders a polished, dark-themed HTML dashboard — complete with a live ticker, price cards, and a summary table for Gold 24K, Gold 22K, and Silver rates (per gram & per kilogram).
+Key highlights:
 
-The system runs scheduled background jobs to continuously fetch updated market rates and provides a clean web interface for viewing the latest prices.
+Live price scraping via SigoScraperService
+Responsive, luxury-styled HTML dashboard served directly from the API
+Prices displayed per gram and per kilogram with auto-detected currency symbol
+Timestamped updates so you always know how fresh the data is
+Clean N-Layer architecture: Controller → Service → Scraper
 
-This project demonstrates real backend engineering concepts like:
 
-Web scraping automation
+Built With
 
-Scheduled background processing
+Show Image
+Show Image
+Show Image
 
-Data storage using NoSQL
 
-REST API design
+Project Structure
+src/
+└── main/
+    └── java/com/sigo/api/
+        ├── controller/
+        │   └── MarketController.java      # REST endpoint, HTML rendering
+        ├── service/
+        │   └── SigoScraperService.java    # Scraping & caching logic
+        └── SigoApplication.java
 
-Dynamic server-side rendering
+Endpoints
+MethodEndpointResponseDescriptionGET/sigo/pricestext/htmlLive market dashboard (Gold, Silver)
+Sample Response
+Visiting /sigo/prices in your browser renders a live dashboard showing:
+MetalPer GramPer KilogramGold 24K₹X,XXX.XX₹X,XX,XXX.XXGold 22K₹X,XXX.XX₹X,XX,XXX.XXSilver₹XX.XX₹XX,XXX.XX
 
-✨ Key Features
-🔄 Automated Live Price Scraping
+Prices are scraped in real time. The dashboard displays the timestamp of the last successful update.
 
-Fetches current:
 
-Gold 24K price
-
-Gold 22K price
-
-Silver price
-
-Extracts values directly from market websites using HTML parsing.
-
-⏱ Scheduled Background Updates
-
-Runs automatically every 30 minutes
-
-Keeps prices updated without manual refresh
-
-Uses Spring Scheduler for automation
-
-🧠 Smart Data Processing
-
-Cleans raw scraped values
-
-Converts:
-
-Price per gram → price per kilogram
-
-Automatically calculates 22K price when unavailable.
-
-💾 Database Storage
-
-Stores latest market data in MongoDB
-
-Enables persistent storage instead of temporary memory
-
-Ready for future historical tracking features
-
-🎨 Dynamic Web Dashboard
-
-Backend renders a fully styled HTML page
-
-Shows:
-
-Metal cards
-
-Price comparison table
-
-Live ticker animation
-
-Last updated timestamp
-
-🏗️ Tech Stack
-⚙️ Backend
+Getting Started
+Prerequisites
 
 Java 17+
+Maven 3.8+
 
-Spring Boot
+Installation
 
-Spring Scheduler
+Clone the repository
 
-REST Controller Architecture
+sh   git clone https://github.com/your-username/sigo.git
 
-🌐 Web Scraping
+Navigate to the project directory
 
-JSoup HTML Parser
+sh   cd sigo
 
-💾 Database
+Build the project
 
-MongoDB (NoSQL Document Database)
+sh   mvn clean install
 
-🎨 Frontend (Server-Rendered)
+Run the application
 
-HTML5
+sh   mvn spring-boot:run
 
-CSS3
+Open your browser and visit
 
-Responsive Layout
+   http://localhost:8080/sigo/prices
 
-🧠 System Architecture
-Scheduler
-   ↓
-Scraper Service (JSoup)
-   ↓
-Data Processing & Cleaning
-   ↓
-MongoDB Storage
-   ↓
-REST Controller
-   ↓
-Live HTML Dashboard
-📂 Project Structure
-com.sigo.api
-│
-├── controller
-│   └── MarketController.java
-│
-├── service
-│   └── SigoScraperService.java
-│
-├── repository
-│   └── MarketDataRepository.java
-│
-└── model
-    └── MarketData.java
-⚙️ How the System Works
-1️⃣ Application Startup
+Usage
+Once running, the /sigo/prices endpoint serves a fully self-contained HTML page featuring:
 
-Automatically performs initial scraping using @PostConstruct.
+Live Ticker — scrolling market status bar
+Price Cards — per-metal cards showing gram & kilo rates
+Summary Table — side-by-side comparison of all metals
+Last Updated — timestamp of the most recent scrape
 
-2️⃣ Scheduled Job Execution
+No frontend setup needed — it's all rendered server-side.
 
-Every 30 minutes:
+Contributing
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
-Connects to market rate pages
+Fork the Project
+Create your Feature Branch
 
-Parses HTML tables
+sh   git checkout -b feature/AmazingFeature
 
-Extracts price values
+Commit your Changes
 
-Cleans and formats data
+sh   git commit -m 'Add some AmazingFeature'
 
-Stores latest prices in MongoDB
+Push to the Branch
 
-3️⃣ Data Retrieval & Display
+sh   git push origin feature/AmazingFeature
 
-Endpoint:
+Open a Pull Request
 
-GET /sigo/prices
 
-Returns a dynamic HTML dashboard showing:
+License
+Distributed under the MIT License. See LICENSE for more information.
 
-Current Gold 24K price
-
-Current Gold 22K price
-
-Current Silver price
-
-Prices per gram & kilogram
-
-Last update timestamp
-
-🔧 Setup & Installation
-Step 1 — Clone Repository
-git clone https://github.com/your-username/sigo-market-tracker.git
-cd sigo-market-tracker
-Step 2 — Configure MongoDB
-
-Ensure MongoDB is running locally:
-
-mongodb://localhost:27017/sigo-db
-
-Update application.properties if needed.
-
-Step 3 — Run Application
-
-Using Maven:
-
-mvn spring-boot:run
-Step 4 — Open Dashboard
-
-Visit:
-
-http://localhost:8080/sigo/prices
-📊 Concepts Demonstrated
-
-This project showcases practical backend development skills:
-
-Real-time data scraping
-
-Scheduled job automation
-
-NoSQL database integration
-
-RESTful API design
-
-Data transformation logic
-
-Server-side UI rendering
-
-🔮 Future Improvements (Recommended)
-
-To make this production-level, you should add:
-
-Historical price tracking charts
-
-REST JSON API endpoints
-
-Redis caching layer
-
-Retry & failure handling logic
-
-Docker deployment
-
-Price alert notifications
-
-Microservice architecture
-
-👨‍💻 Author
-
-Girimurugan
-Backend Developer — Java | Spring Boot | DSA
+Contact
+Your Name — your.email@example.com
+Project Link: https://github.com/your-username/sigo
