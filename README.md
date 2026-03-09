@@ -221,7 +221,6 @@ Possible upgrades for this project:
 
 👨‍💻 Author
 
-Girimurugan
-
+Girimurugan S
 Computer Science Engineering Student
 Backend Developer focused on Java, Spring Boot, APIs, and Data Systems
