@@ -1,5 +1,12 @@
-🪙 SiGo – Live Gold & Silver Market Tracker 🚀
-Real-Time Precious Metal Scraper • Spring Boot • MongoDB • JSoup
+# 🪙 SiGo – Live Gold & Silver Market Tracker
+
+### Real-Time Precious Metal Price Scraper • Spring Boot • MongoDB • JSoup
+
+---
+
+## 🚀 Project Identity
+
+```javascript
 const sigo = {
   name: "SiGo Market Tracker",
   type: "Backend Data Scraping System",
@@ -16,92 +23,95 @@ const sigo = {
 };
 📊 Project Overview
 
-SiGo is a backend service that scrapes live Gold and Silver prices from Groww and exposes them through REST APIs and a dynamic HTML dashboard.
+SiGo is a backend service that scrapes live Gold and Silver prices from the Groww website and exposes them through REST APIs and a dynamic HTML dashboard.
 
-Instead of manually checking market prices, SiGo automatically:
+Instead of manually checking market prices, the system automatically:
 
 Scrapes latest prices
 
-Stores them in MongoDB
-
 Calculates price per gram & kilogram
 
-Displays them in a clean UI
+Stores the data in MongoDB
+
+Displays it in a simple web dashboard
 
 ✨ Features
-
-🟡 Live Gold Price Tracking
+🟡 Gold Price Tracking
 
 Gold 24K price
 
 Gold 22K price
 
-Price per gram & kilogram
+Gram to kilogram conversion
 
-⚪ Silver Market Tracking
+⚪ Silver Price Tracking
 
-Silver price scraping
+Live silver price scraping
 
-Gram → Kilogram conversion
+Price per gram and kilogram calculation
 
 ⏱ Automated Scheduler
 
-Scrapes new data every 30 minutes
+Data scraping runs every 30 minutes
 
-🌐 REST API
+🌐 REST APIs
 
-Access stored historical price data
+Retrieve stored gold price history
 
-📦 Database Storage
+Retrieve stored silver price history
 
-MongoDB for persistence
+🗄 MongoDB Storage
 
-🎨 Minimal Market Dashboard
+Stores historical price records
 
-Displays live metal prices
+🎨 Minimal HTML Dashboard
 
-Clean financial-style UI
+Displays current market prices
 
-🧠 How It Works
-Groww Website
-      │
-      ▼
-JSoup Web Scraper
-      │
-      ▼
-Spring Boot Service
-      │
-      ▼
-MongoDB Database
-      │
-      ▼
-REST API + HTML Dashboard
+Shows last updated timestamp
+🧠 System Architecture
+
+Groww Website  
+│  
+▼  
+JSoup Web Scraper  
+│  
+▼  
+Spring Boot Service  
+│  
+▼  
+MongoDB Database  
+│  
+▼  
+REST API + HTML Dashboard  
 🛠 Tech Stack
-⚙ Backend
+Backend
 
-☕ Java
+Java
 
-🌱 Spring Boot
+Spring Boot
 
-🔎 Web Scraping
+Web Scraping
 
 JSoup
 
-🗄 Database
+Database
 
 MongoDB
 
-🧩 Architecture
+Architecture
 
-REST API
+REST APIs
 
 MVC Pattern
 
 Scheduled Jobs
 
 📡 API Endpoints
-Get Live Market Dashboard
+Live Market Dashboard
+
 GET /sigo/prices
+
 
 Returns an HTML dashboard displaying:
 
@@ -115,49 +125,69 @@ Price per gram
 
 Price per kilogram
 
-Open in browser:
+Access in browser:
+
 
 http://localhost:5050/sigo/prices
-Get Gold Price History
+
+Gold Price History
+
 GET /api/prices/gold
 
-Returns stored gold price entries.
 
-Get Silver Price History
+Returns all stored gold price records.
+
+Silver Price History
+
 GET /api/prices/silver
 
-Returns stored silver price entries.
+
+Returns all stored silver price records.
 
 🗂 Project Structure
+
 sigo
- ┣ controller
- ┃ ┣ MarketController
- ┃ ┗ PriceController
- ┣ model
- ┃ ┣ GoldPrice
- ┃ ┗ SilverPrice
- ┣ repository
- ┃ ┣ GoldPriceRepository
- ┃ ┗ SilverPriceRepository
- ┣ service
- ┃ ┗ SigoScraperService
- ┣ ApiApplication
- ┗ application.properties
+│
+├── controller
+│   ├── MarketController.java
+│   └── PriceController.java
+│
+├── model
+│   ├── GoldPrice.java
+│   └── SilverPrice.java
+│
+├── repository
+│   ├── GoldPriceRepository.java
+│   └── SilverPriceRepository.java
+│
+├── service
+│   └── SigoScraperService.java
+│
+├── ApiApplication.java
+│
+└── application.properties
+
 ⏰ Scheduled Scraping
 
-The system automatically updates prices every 30 minutes.
+The scraper automatically runs every 30 minutes.
 
 @Scheduled(fixedRate = 1800000)
 
-This ensures the dashboard always shows fresh market data.
+This ensures the system keeps updating:
+
+Gold 24K price
+
+Gold 22K price
+
+Silver price
 
 🧾 Example Database Record
 Gold Price
 {
- "metal": "Gold 24K",
- "pricePerGm": 7250,
- "pricePerKg": 7250000,
- "timestamp": "2026-03-09T10:22:14"
+  "metal": "Gold 24K",
+  "pricePerGm": 7250,
+  "pricePerKg": 7250000,
+  "timestamp": "2026-03-09T10:22:14"
 }
 ⚙ Installation Guide
 1️⃣ Clone Repository
@@ -169,31 +199,29 @@ cd sigo
 Make sure MongoDB is running locally.
 
 mongodb://localhost:27017/sigo_db
-4️⃣ Run Spring Boot
+4️⃣ Run Spring Boot Application
 mvn spring-boot:run
 5️⃣ Open Dashboard
 http://localhost:5050/sigo/prices
 🚀 Future Improvements
 
-Possible upgrades:
+Possible upgrades for this project:
 
-📈 Price trend graphs
+📈 Price trend charts
 
 📊 Historical analytics
 
+🐳 Docker deployment
+
 ☁ Cloud deployment
 
-🐳 Docker support
+🔔 Price alert notifications
 
-🔔 Price alerts
-
-📱 React frontend dashboard
+⚡ React frontend dashboard
 
 👨‍💻 Author
 
 Girimurugan
 
-CSE (AI & ML) Student
-Backend Developer | Java | Spring Boot | APIs
-
-Interested in building data systems, automation tools, and scalable backend services.
+Computer Science Engineering Student
+Backend Developer focused on Java, Spring Boot, APIs, and Data Systems
