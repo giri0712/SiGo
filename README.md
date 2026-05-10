@@ -225,6 +225,6 @@ open http://localhost:8081
 
 **[ `MARKET DATA` · `WEBSOCKET` · `SPRING BOOT` · `JAVA 21` · `DOCKER` ]**
 
-Made with ☕ in India &nbsp;|&nbsp; 
+Made with ☕ in India &nbsp; 
 </div>
 
