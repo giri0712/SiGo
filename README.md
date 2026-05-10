@@ -6,7 +6,7 @@
 
 ## What is SiGo?
 
-SiGo is a backend market terminal that tracks live MCX (Multi Commodity Exchange) precious metals pricing — Gold, Gold Mini, Silver, and more. It scrapes live data, caches it in memory, and exposes it via a clean REST API and WebSocket feed. A lightweight static frontend is included for live visualization.I have vibe coded the front-end part with Claude code 
+SiGo is a backend market terminal that tracks live MCX (Multi Commodity Exchange) precious metals pricing — Gold, Gold Mini, Silver, and more. It scrapes live data, caches it in memory, and exposes it via a clean REST API and WebSocket feed. A lightweight static frontend is included for live visualization.I have vibe coded the front-end part with Claude code.
 
 ---
 
