@@ -161,6 +161,7 @@ docker run -p 8081:8081 sigo-api
 
 ## Author
 
-**Giri** — BTech CSE (AI/ML), VIT-AP University  
+**Girimurugan S** — BTech CSE (AI/ML), VIT-AP University  
 GitHub: [@giri0712](https://github.com/giri0712)
+
 Website is live at:https://sigo-dwk4.onrender.com/
