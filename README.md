@@ -2,12 +2,12 @@
 <div align="center">
 
 ```
-███████╗██╗ ██████╗  ██████╗
-██╔════╝██║██╔════╝ ██╔═══██╗
-███████╗██║██║  ███╗██║   ██║
-╚════██║██║██║   ██║██║   ██║
-███████║██║╚██████╔╝╚██████╔╝
-╚══════╝╚═╝ ╚═════╝  ╚═════╝
+███████╗   ██╗   ██████╗     ██████╗
+██╔════╝   ██║   ██╔════╝   ██╔═══██╗
+███████╗   ██║   ██║  ███╗  ██║   ██║
+╚════██║   ██║   ██║   ██║  ██║   ██║
+███████║   ██║   ╚██████╔╝  ╚██████╔╝
+╚══════╝   ╚═╝   ╚═════╝    ╚═════╝
 ```
 
 ### `v1.0` — **INDIA MARKET TERMINAL**
@@ -225,7 +225,6 @@ open http://localhost:8081
 
 **[ `MARKET DATA` · `WEBSOCKET` · `SPRING BOOT` · `JAVA 21` · `DOCKER` ]**
 
-Made with ☕ in India &nbsp;|&nbsp; MIT License
-
+Made with ☕ in India &nbsp;|&nbsp; 
 </div>
-Website is live at:https://sigo-dwk4.onrender.com/
+
