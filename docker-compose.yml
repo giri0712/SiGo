@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  sigo-api:
+    build: .
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - metals.api.key=${METALS_API_KEY}
+      - metals.api.base.url=https://api.metals-api.com/v1
+    restart: unless-stopped
