@@ -3,13 +3,12 @@ package com.sigo.terminal.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.Map;
 
 @RestController
 public class RootController {
 
-    @GetMapping("/")
+    @GetMapping("/api")
     public ResponseEntity<Map<String, String>> getApiInfo() {
         Map<String, String> info = Map.of(
             "message", "SiGo India Commodity Terminal API",
