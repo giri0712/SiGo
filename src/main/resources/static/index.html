@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SiGo India Commodity Terminal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .symbol {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        .category {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .change {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .change.up {
+            color: #27ae60;
+        }
+        .change.down {
+            color: #e74c3c;
+        }
+        .change.flat {
+            color: #95a5a6;
+        }
+        .trend {
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        .trend.up {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .trend.down {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .trend.flat {
+            background-color: #e2e3e5;
+            color: #383d41;
+        }
+        .last-updated {
+            font-size: 10px;
+            color: #999;
+            margin-top: 10px;
+        }
+        .error {
+            text-align: center;
+            color: #e74c3c;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>SiGo India Commodity Terminal</h1>
+    <div id="container" class="container">
+        <!-- Cards will be inserted here -->
+    </div>
+
+    <script>
+        const API_URL = '/api/v1/snapshot';
+
+        function formatPrice(price) {
+            return new Intl.NumberFormat('en-IN', {
+                style: 'currency',
+                currency: 'INR',
+                minimumFractionDigits: 2
+            }).format(price);
+        }
+
+        function formatChange(change, changePct) {
+            const sign = change >= 0 ? '+' : '';
+            return `${sign}${change.toFixed(2)} (${sign}${changePct.toFixed(2)}%)`;
+        }
+
+        function createCard(asset) {
+            const card = document.createElement('div');
+            card.className = 'card';
+
+            const trendClass = asset.trend.toLowerCase();
+            const changeClass = asset.change >= 0 ? 'up' : asset.change < 0 ? 'down' : 'flat';
+
+            card.innerHTML = `
+                <div class="card-header">
+                    <div>
+                        <div class="symbol">${asset.symbol}</div>
+                        <div class="category">${asset.category.replace('_', ' ')}</div>
+                    </div>
+                    <div class="trend ${trendClass}">${asset.trend}</div>
+                </div>
+                <div class="price">${formatPrice(asset.price)}</div>
+                <div class="change ${changeClass}">${formatChange(asset.change, asset.changePct)}</div>
+                <div class="last-updated">Updated: ${new Date(asset.lastUpdated).toLocaleString()}</div>
+            `;
+
+            return card;
+        }
+
+        function updatePrices() {
+            fetch(API_URL)
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('container');
+                    container.innerHTML = '';
+
+                    // Combine all asset arrays
+                    const allAssets = [
+                        ...(data.preciousMetals || []),
+                        ...(data.baseMetals || []),
+                        ...(data.energyCommodities || []),
+                        ...(data.metalStocks || [])
+                    ];
+
+                    if (allAssets.length === 0) {
+                        container.innerHTML = '<div class="error">No data available. Please check the API.</div>';
+                        return;
+                    }
+
+                    allAssets.forEach(asset => {
+                        container.appendChild(createCard(asset));
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching prices:', error);
+                    document.getElementById('container').innerHTML = '<div class="error">Error loading prices. Please try again later.</div>';
+                });
+        }
+
+        // Initial load
+        updatePrices();
+
+        // Refresh every 30 seconds
+        setInterval(updatePrices, 30000);
+    </script>
+</body>
+</html>
