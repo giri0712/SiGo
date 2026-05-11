@@ -57,6 +57,11 @@ public class GrowScraperService {
         METAL_STOCK_SLUGS.put("COALINDIA",   new String[]{"coal-india-ltd",                      "Coal India",         "COALINDIA"});
         METAL_STOCK_SLUGS.put("MOIL",        new String[]{"moil-ltd",                            "MOIL Ltd",           "MOIL"});
         METAL_STOCK_SLUGS.put("GRAVITA",     new String[]{"gravita-india-ltd",                   "Gravita India",      "GRAVITA"});
+        METAL_STOCK_SLUGS.put("RELIANCE",  new String[]{"reliance-industries-ltd",   "Reliance Industries", "RELIANCE"});
+        METAL_STOCK_SLUGS.put("TCS",       new String[]{"tata-consultancy-services-ltd", "TCS",             "TCS"});
+        METAL_STOCK_SLUGS.put("HDFCBANK",  new String[]{"hdfc-bank-ltd",              "HDFC Bank",          "HDFCBANK"});
+        METAL_STOCK_SLUGS.put("INFOSYS",   new String[]{"infosys-ltd",               "Infosys",            "INFOSYS"});
+        METAL_STOCK_SLUGS.put("ITC",       new String[]{"itc-ltd",                   "ITC Ltd",             "ITC"}); 
     }
 
     private static final Map<String, String[]> COMMODITY_META = Map.ofEntries(
@@ -515,7 +520,12 @@ public class GrowScraperService {
         Map.entry("HINDPETRO",  new double[]{398.4,  -2.6, -0.65, 404.0,  395.0}),
         Map.entry("COALINDIA",  new double[]{395.8,   1.4,  0.35, 399.0,  393.0}),
         Map.entry("MOIL",       new double[]{367.5,   4.2,  1.16, 372.0,  362.0}),
-        Map.entry("GRAVITA",    new double[]{1852.3, 22.8,  1.25,1875.0, 1830.0})
+        Map.entry("GRAVITA",    new double[]{1852.3, 22.8,  1.25,1875.0, 1830.0}),
+        Map.entry("RELIANCE",  new double[]{2950.0,  12.5, 0.43, 2975.0, 2930.0}),
+        Map.entry("TCS",       new double[]{3580.0, -18.0,-0.50, 3610.0, 3560.0}),
+        Map.entry("HDFCBANK",  new double[]{1820.0,   8.2, 0.45, 1835.0, 1810.0}),
+        Map.entry("INFOSYS",   new double[]{1540.0,  -6.4,-0.41, 1558.0, 1530.0}),
+        Map.entry("ITC",       new double[]{428.0,    2.1, 0.49,  432.0,  424.0})
     );
 
     private CommodityPrice getFallbackStock(String symbol, String displayName) {
